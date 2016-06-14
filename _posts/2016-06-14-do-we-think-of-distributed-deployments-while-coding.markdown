@@ -3,6 +3,7 @@ published: true
 title: Do we think of distributed deployments while coding?
 layout: post
 ---
+## Do we think of distributed deployments while coding?
 At least I never did...until someone wrote the following and I has sleepless nights fixing those:
 
 1. **Reading data soon after writing** - This led to reading stale data, before the changes are propagated to all the nodes of the database. There is a configuration of write quorum that says that a write is notified to be successful by the database only when it got performed on the specified number of nodes. So with number of nodes=3 and write quorum =2, the database confirms a write if 2 node were written to. Now when the data was read from third node and due to network latency the writes were not propagated to the third node, stale data was served.
